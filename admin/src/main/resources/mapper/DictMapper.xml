@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.question.admin.dao.dao_01.DictMapper">
+    <resultMap id="DictResultMap" type="com.question.admin.model.entity.DictEntity">
+        <result column="id" property="id"/>
+        <result column="category" property="category"/>
+        <result column="key" property="key"/>
+        <result column="value" property="value"/>
+        <result column="name" property="name"/>
+        <result column="bz" property="bz"/>
+        <result column="type" property="type"/>
+        <result column="order_num" property="orderNum"/>
+        <result column="insert_user" property="insertUser"/>
+        <result column="insert_date" property="insertDate"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="del" property="del"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="selectPage" resultMap="DictResultMap">
+        select * from sys_dict
+    </select>
+
+</mapper>

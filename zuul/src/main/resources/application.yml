@@ -1,0 +1,32 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/
+server:
+  port: 8002
+spring:
+  application:
+    name: api-zuul
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  routes:
+    admin:
+      path: /api-admin/**
+      serviceId: api-admin
+    oauth:
+      path: /api-oauth/**
+      serviceId: api-oauth
+#ribbon:
+#    ReadTimeout: 60000
+#    ConnectTimeout: 60000
+#security:
+#  oauth2:
+#    client:
+#      access-token-uri: http://localhost:8005/oauth/token
+#      user-authorization-uri: http://localhost:8005/oauth/authorize
+#      client-id: app
+#    resource:
+#      user-info-uri: http://localhost:8005/user
+#      prefer-token-info: false
+
+

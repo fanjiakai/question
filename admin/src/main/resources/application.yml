@@ -1,0 +1,61 @@
+#logging:
+##  file: ${user.dir}/logs/smart-reimbursement.log
+#  level:
+#    com:
+#      ysyt:
+#        mapper: info
+#    org:
+#      springframework: info
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/
+server:
+  port: 8005
+spring:
+  application:
+    name: api-admin
+  datasource:
+    ds1:
+      jdbc-url: jdbc:mysql://localhost:3306/question?serverTimezone=UTC
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        maximum-pool-size: 100
+        minimum-idle: 10
+        max-lifetime: 60000
+        idle-timeout: 60000
+        connection-timeout: 60000
+    ds2:
+      jdbc-url: jdbc:mysql://localhost:3306/question_02?serverTimezone=UTC
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        maximum-pool-size: 100
+        minimum-idle: 10
+        max-lifetime: 60000
+        idle-timeout: 60000
+        connection-timeout: 60000
+mybatis:
+  mapper-locations: mapper/**Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis-plus:
+#  mapper-locations: classpath:mapper/*.xml
+logging:
+    level:
+      com.question.admin.dao: DEBUG
+auth-server: http://localhost:8085/question
+security:
+  oauth2:
+    client:
+      client-id: admin
+      client-secret: 123456
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      access-token-uri: ${auth-server}/oauth/token
+    resource:
+      jwt:
+        key-uri: ${auth-server}/oauth/token_key

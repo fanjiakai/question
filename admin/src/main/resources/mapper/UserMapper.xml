@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.question.admin.dao.dao_01.UserMapper">
+    <resultMap id="UserResultMap" type="com.question.admin.model.entity.UserEntity">
+        <result column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="dept" property="dept"/>
+        <result column="role" property="role"/>
+        <result column="insert_user" property="insertUser"/>
+        <result column="insert_date" property="insertDate"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="del" property="del"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="UserResultMap">
+        select * from sys_user
+    </select>
+
+    <select id="selectPage" resultMap="UserResultMap">
+        select * from sys_user
+    </select>
+
+    <select id="getUserById" resultMap="UserResultMap">
+        select * from sys_user where id = #{id}
+    </select>
+
+    <insert id="insertUser">
+        insert into sys_user
+        (id,user_name,password,dept,role,insert_user,insert_date,update_user,update_date,del,remark)
+        values
+        (#{id},#{userName},#{password},#{dept},#{role},#{insertUser},#{insertDate},#{updateUser},#{updateDate},#{del},#{remark})
+    </insert>
+</mapper>
